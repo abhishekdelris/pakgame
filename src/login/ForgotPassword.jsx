@@ -108,11 +108,79 @@ const ForgotPassword = () => {
     }
   };
 
- 
+ const handleForgotPassword =(e) =>{
+  
+    e.preventDefault();
+
+    if (!isOtpVerified) {
+      alert("Please verify OTP before registering.");
+      return;
+    }
+
+    // Make sure passwords match
+    if (password !== confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    // Prepare headers
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append("Cookie", "ci_session=ibb96pue2kcr781jklu1aj81hjgh1i2f");  // Ensure this session cookie is valid or dynamically fetched.
+ // Prepare the registration data
+ const registrationData = {
+  phone: `${countryCode}${phoneNum}`,
+  password: password,
+  otp : otp
+};
+
+const requestOptions = {
+  method: "POST",
+  headers: myHeaders,
+  body: JSON.stringify(registrationData),
+  redirect: "follow"
+};
+
+   // Perform the registration request
+   fetch(`${baseURLAPI}users/forgot_password`, requestOptions)
+   .then((response) =>   response.text()) // Handle response as text first
+   .then((result) => {
+     try {
+       const parsedResult = JSON.parse(result); // Parse as JSON
+       console.log("parsedResult",parsedResult);
+       
+
+       if (parsedResult.error === false) { // Assuming error is a boolean
+         alert("Registration successful!");
+         setEmailError("")
+
+         navigate('/login');  // Redirect to login after successful registration
+       } else if (parsedResult.error === true) {
+         setEmailError("Email already registered!");
+         console.log("email error", parsedResult.message);
+
+       } else {
+         setEmailError("");
+         console.error("Unexpected error format:", parsedResult);
+         alert(`${parsedResult.message}`);
+       }
+     } catch (error) {
+       console.error("Response is not in JSON format:", error);
+       alert("An error occurred while processing the registration.");
+     }
+   })
+   .catch((error) => {
+     console.error("Network error or other issue:", error);
+     alert(`An error occurred during registration.${result}`);
+   });
+
+};
+
+
   const handleBackClick = () => {
-    navigator(-1);
-    
+    navigate(-1);
   };
+
 
 
   const [activeTab, setActiveTab] = useState("phone");
