@@ -1,0 +1,38 @@
+
+.game-statistics-top .nav-pills {
+    margin-top: 10px;
+    justify-content: space-between;
+}
+
+.game-statistics-top .nav-pills li.nav-item .nav-link {
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    background: #fff;
+    box-shadow: 0 0 8px #dedede;
+    color: #848484;
+}
+.game-statistics-top .nav-pills li.nav-item .nav-link.active {
+    background: linear-gradient(90deg, #f95959 0%, #ff9a8e 100%);
+    color: #fff;
+}
+.game-statistics-content {
+    width: 100%;
+    padding: 26px;
+    background: #fff;
+    box-shadow: 0 0 10px #e6e6e6;
+    border-radius: 8px;
+    text-align: center;
+}
+.game-statistics-content h5 {
+    font-size: 25px;
+    color: #FEAA57;
+}
+.game-statistics-content p {
+    color: #768096;
+    margin: 0;
+}
+
+
+
+

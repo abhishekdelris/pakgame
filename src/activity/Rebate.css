@@ -1,0 +1,120 @@
+
+
+
+
+.rebate-top .slick-list .nav-item .nav-link {
+  background: #fff;
+  border-radius: 7px;
+  display: block;
+  width: 100px;
+  text-align: center;
+  color: #000;
+  padding: 5px;
+  box-shadow: 0 0 5px #e4e4e4;
+}
+
+.rebate-top .slick-list .nav-item .active.nav-link {
+  background: linear-gradient(90deg, #f95959 0%, #ff9a8e 100%);
+  color: #fff;
+}
+.rebate-top .slick-list .nav-item .nav-link svg g,
+.rebate-top .slick-list .nav-item .nav-link svg {
+  color: #768096;
+  fill: #768096;
+  display: block;
+  margin: auto;
+}
+.rebate-top .slick-list .nav-item .active.nav-link svg g,
+.rebate-top .slick-list .nav-item .active.nav-link svg{
+  color: #fff;
+  fill: #fff;
+}
+.rebate-content label {
+  color: #f95959;
+  border: 1px solid #f95959;
+  padding: 5px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  font-size: 14px;
+  gap: 6px;
+}
+
+.rebate-content label svg {
+  color: #f95959;
+  fill: #f95959;
+}
+
+.rebate-inner {
+  padding: 10px;
+  background: #fff;
+  box-shadow: 0 0 10px #e5e5e5;
+  border-radius: 10px;
+  margin: 20px 0;
+}
+
+.rebate-content p {
+  margin: 0 0 5px;
+  font-size: 16px;
+}
+
+.rebate-content h6 {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 10px 0;
+}
+
+.rebate-txt {
+  background: #F6F6F6;
+  margin-bottom: .2rem;
+  width: 85%;
+  padding: 6px;
+  font-size: 14px;
+  border-radius: .13333rem;
+  color: #768096;
+}
+.rebate-item-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.rebate-item {
+  width: 50%;
+  background: #f6f6f6;
+  border-radius: 8px;
+  margin: 10px 0;
+  padding: 10px;
+}
+.rebate-item span {
+  font-size: 12px;
+}
+.rebate-item h4 {
+  font-size: 18px;
+  color: #FEAA57;
+  margin: 0;
+}
+.rebate-content h3 {
+  font-size: 13px;
+  font-weight: 500;
+}
+.rebate-history h4 {
+  font-size: 18px;
+  border-left: 3px solid #f95959;
+  padding: 0 0 0 5px;
+  margin: 0 0 10px;
+  line-height: 1;
+}
+.rebate-history button {
+  width: 100%;
+  border: 1px solid #f95959;
+  border-radius: 20px;
+  padding: 6px;
+  color: #f95959;
+  background: transparent;
+}
+
+
+

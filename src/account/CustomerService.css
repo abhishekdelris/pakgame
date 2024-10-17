@@ -1,0 +1,43 @@
+
+
+
+
+.customer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.customer-inner svg {
+    fill: #000;
+}
+.customer-inner p {
+    margin: 0;
+}
+.customer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    padding: 15px;
+    box-shadow: 0 0 10px #e1e1e1;
+    border-radius: 10px;
+}
+.customer-inner div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #000;
+}
+.customer-inner img {
+    width: 35px;
+    height: 35px;
+}
+
+
+/* about Detail Css  */
+.about-detail-content p, .about-detail-content h4, .about-detail-content h5, .about-detail-content h6 {
+    margin: 0;
+}
+
+
+

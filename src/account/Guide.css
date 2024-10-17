@@ -1,0 +1,20 @@
+
+
+
+.guid-content p {
+    margin: 0;
+}
+.guid-img {
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+}
+.guid-img img {
+    width: 50%;
+}
+
+
+
+
+
+

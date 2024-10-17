@@ -1,0 +1,69 @@
+
+
+.promotion-rule-head {
+    margin: 10px 0;
+}
+.promotion-rule-head h5 {
+    color: #f95959;
+    font-size: 18px;
+    text-align: center;
+    font-weight: 600;
+}
+.promotion-rule-head h6 {
+    color: #768096;
+    text-align: center;
+    font-size: 14px;
+}
+.promotion-rule-content {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+.promotion-rule-content-heading h5 {
+    background: #f95959;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    margin: 0;
+}
+.promotion-rule-content-heading p {
+    padding: 10px;
+    margin: 0;
+    color: #768096;
+    font-size: 14px;
+    font-weight: 500;
+}
+.promotion-rule-content-heading table {
+    width: 100%;
+}
+
+.promotion-rule-content-heading table tr th {
+    background: #f95959;
+    font-size: 12px;
+    width: 25%;
+    padding: 15px 0;
+    text-align: center;
+    color: #fff;
+}
+.promotion-rule-content-heading table tbody tr td {
+    text-align: center;
+    padding: 10px 0;
+}
+
+/* .promotion-rule-content-heading table tbody tr::nth-child(even){
+    background-color: #FFF;
+
+}
+.promotion-rule-content-heading table tbody tr::nth-child(odd){
+    background-color: #768096;
+} */
+
+.promotion-rule-content-heading table tbody tr:nth-child(even) {
+    background-color: #FFF;
+}
+.promotion-rule-content-heading table tbody tr:nth-child(odd) {
+    background-color: #e5e9f8;
+}
+
+

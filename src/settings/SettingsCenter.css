@@ -1,0 +1,150 @@
+/* .settings-center {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    background-color: #f7f8fc;
+    padding: 20px;
+  } */
+  
+  .header h1 {
+    text-align: center;
+    color: #ff6457;
+  }
+  
+  .profile-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .profile-info {
+    display: flex;
+    align-items: center;
+  }
+  
+  .avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin-right: 20px;
+  }
+  
+  .profile-details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .change-avatar {
+    background-color: transparent;
+    border: none;
+    color: #ff6457;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .nickname,
+  .uid {
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .uid {
+    color: #b0b0b0;
+  }
+  
+  .security-info {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .security-info h2 {
+    color: #ff6457;
+    margin-bottom: 20px;
+  }
+  
+  .security-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .item-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .item-left img {
+    margin-right: 10px;
+  }
+  
+  .edit-button {
+    background-color: transparent;
+    border: none;
+    color: #a5a4a4;
+    cursor: pointer;
+  }
+  
+  .version {
+    color: #b0b0b0;
+  }
+  
+  .userInfo__container-setting-center {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 25px auto 0;
+  }
+  
+  .userInfo__container-setting-center-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    justify-content: space-between;
+  }
+  
+  .userInfo__container-content__avatar img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+  }
+  
+  .userInfo__container-setting-center-header-edit {
+    display: flex;
+    align-items: center;
+    margin-left: 100px;
+    cursor: pointer;
+  }
+  
+  .userInfo__container-setting-center-content {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .userInfo__container-setting-center-content h5 {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .userInfo__container-setting-center-content div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 137px;
+  }
+  
+  .icon-copy {
+    width: 24px;
+    height: 24px;
+    fill: #888;
+    cursor: pointer;
+  }
+  

@@ -1,0 +1,12 @@
+.avatar-grid {
+  width: -webkit-fill-available;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.title-header {
+  background: #ff6457;
+    /* width: auto; */
+    padding: 5px;
+}

@@ -1,0 +1,43 @@
+.activity-rules {
+    max-width: 100%;
+    margin: 10px auto;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  .activity-header {
+    background-color: #ff4d4f;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  
+  .rules-list {
+    list-style-type: none;
+    padding: 20px;
+    margin: 0;
+  }
+  
+  .rule-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+  }
+  
+  .bullet {
+    color: #ff4d4f;
+    margin-right: 10px;
+    font-size: 18px;
+    line-height: 1;
+  }
+  
+  .rule-text {
+    font-size: 14px;
+    color: #333;
+    flex: 1;
+  }

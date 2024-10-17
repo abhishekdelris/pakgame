@@ -1,0 +1,61 @@
+
+
+
+.deposit-history-top .nav-item .nav-link {
+    color: #768096;
+    fill: #768096;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: #fff;
+    box-shadow: 0 0 10px #e3e3e3;
+    width: 95%;
+    justify-content: center;
+    padding: 10px 0;
+    border-radius: 8px;
+    margin: 10px auto;
+    font-size: 12px;
+    white-space: pre;
+}
+.deposit-history-top .nav-item .nav-link svg {
+    fill: #768096;
+    height: 25px;
+    width: 25px;
+}
+
+.deposit-history-top .nav-item .active.nav-link {
+    background: linear-gradient(90deg, #f95959 0%, #ff9a8e 100%);
+    color: #fff;
+}
+.deposit-history-top .nav-item .active.nav-link svg {
+    fill: #fff;
+}
+.deposit-history-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+.deposit-history-card {
+    background: #fff;
+    padding: 15px 10px;
+    box-shadow: 0 0 10px #e3e3e3;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.deposit-history-item label {
+    font-weight: 600;
+    color: #768096;
+    font-size: 14px;
+}
+
+.deposit-history-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 7px;
+}
+
+.a{fill:none;stroke:#000000;stroke-linejoin:round;}

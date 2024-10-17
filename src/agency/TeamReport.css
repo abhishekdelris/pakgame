@@ -1,0 +1,64 @@
+
+
+.team-report-head {
+    background: #fff;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    position: relative;
+}
+.team-report-head input {
+    width: 100%;
+    border: 0;
+    padding: 5px 65px 5px 5px;
+}
+.team-report-head input:focus-visible {
+    outline: none;
+}
+.team-report-head button {
+    background: #f95959;
+    color: #fff;
+    border: 0;
+    padding: 5px 20px;
+    border-radius: 30px;
+    position: absolute;
+    right: 12px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: fit-content;
+}
+.team-report-head button svg {
+    width: 20px;
+    height: 20px;
+    fill: #fff;
+}
+.team-report-content {
+    background: #f95959;
+    border-radius: 8px;
+    padding: 20px 10px;
+    color: #fff;
+}
+.team-report-content {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.team-report-inner {
+    width: 50%;
+    text-align: center;
+    margin-bottom: 5px;
+}
+.team-report-content .team-report-inner:nth-child(5),
+.team-report-content .team-report-inner:nth-child(3),
+.team-report-content .team-report-inner:first-child {
+    border-right: 1px solid #B6BCC8;
+}
+.team-report-inner p {
+    font-size: 13px;
+    margin: 0;
+}
+
+
+
+

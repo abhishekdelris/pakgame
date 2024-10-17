@@ -1,0 +1,17 @@
+.selected-amount {
+    background: linear-gradient(90deg, #f95959 0%, #ff9a8e 100%);
+    color: white;
+}
+
+.selected-method {
+    background: linear-gradient(90deg, #f95959 0%, #ff9a8e 100%); /* Change this to your desired color */
+     border: 2px solid #000;  /* Optional: add border to highlight selection */
+    /* Add any other styling you want for the selected method */
+  }
+
+.deposite-card-inner {
+    margin-top: 74px;
+}
+
+
+  

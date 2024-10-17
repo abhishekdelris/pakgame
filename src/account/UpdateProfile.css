@@ -1,0 +1,29 @@
+.container1 {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .user-profile1 {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .account-user-card1 {
+    margin-top: 20px;
+  }
+  
+  .avatar-img1 {
+    cursor: pointer;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 10px;
+    transition: transform 0.2s ease;
+  }
+  
+  .avatar-img1.selected {
+    transform: scale(1.1);
+    border: 2px solid #007bff;
+  }
+  

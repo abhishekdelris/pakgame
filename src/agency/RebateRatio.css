@@ -1,0 +1,53 @@
+ 
+
+
+
+ .rebate-level {
+    background: #fff;
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #eaeaea;
+}
+.rebate-level h6 span {
+    color: #fa6563;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 600;
+}
+.rebate-level ul li {
+    font-size: 14px;
+    color: #747474;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+.rebate-level ul li div{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+}
+.rebate-level ul li div:before {
+    position: absolute;
+    content: "";
+    width: 2px;
+    height: 8px;
+    border: 1px dashed #f95959;
+    bottom: -8px;
+    left: 6px;
+}
+.rebate-level ul li:last-child div:before {
+    display: none;
+}
+.rebate-level ul li span {
+    font-size: 15px;
+    color: #000;
+}
+
+
+
+
+
+

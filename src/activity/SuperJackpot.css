@@ -1,0 +1,83 @@
+
+
+.super-jackpot-header {
+    position: relative;
+}
+.super-jackpot-header .super-jackpot-header-content {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    width: 60%;
+}
+.super-jackpot-header-content h4 {
+    font-size: 18px;
+    color: #fff;
+    margin: 10px 0;
+}
+.super-jackpot-header-content p {
+    color: #fff;
+    font-size: 13px;
+}
+.super-jackpot-content button {
+    background: linear-gradient(90deg, #CCCEDC 15.38%, #CDCFDD 98.73%);
+    width: 100%;
+    border-radius: 30px;
+    border: 0;
+    padding: 6px;
+    color: #fff;
+    fill: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 400;
+}
+.super-jackpot-content button svg {
+    fill: #fff;
+}
+
+.cls-1{fill:none;}
+.cls-2{fill:#f95959;}
+
+.super-jackpot-item-inner {
+    background: #fff;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+    box-shadow: 0 0 5px #eeeeee;
+    border-radius: 5px;
+}
+.super-jackpot-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+.super-jackpot-empty {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px #e6e6e6;
+}
+
+.super-jackpot-empty svg {
+    width: 100%;
+    fill: #a4a4a4;
+}
+.super-jackpot-empty p {
+    margin: 0;
+    text-align: center;
+}
+.supper-jackpot-button a {
+    background: linear-gradient(90deg, #f95959 0%, #ff9a8e 100%);
+    width: 100%;
+    display: block;
+    text-align: center;
+    color: #fff;
+    margin: 10px 0;
+    border-radius: 30px;
+    padding: 6px;
+}
+
+
