@@ -50,6 +50,8 @@ import PromotionRule from './agency/PromotionRule';
 import AgentLine from './agency/AgentLine';
 import RebateRatio from './agency/RebateRatio';
 import FullProfileUpdate from './account/FullProfileUpdate';
+import EWalletPayment1 from './payment/EWalletPayment1';
+import EWalletPayment2 from './payment/EWalletPayment2';
 
 
 const App = () => {
@@ -155,6 +157,28 @@ const App = () => {
             </>
           }
         />
+        <Route
+          path="/addbank"
+          element={
+            <>
+             
+             <EWalletPayment1 />
+             
+              
+            </>
+          } 
+          />
+           <Route
+          path="/eWalletPayment2"
+          element={
+            <>
+             
+             <EWalletPayment2 />
+             
+              
+            </>
+          } 
+          />
          <Route
           path="/ChangePassword"
           element={

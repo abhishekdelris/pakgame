@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import withdraw1 from '../assets/image/deposite/Withdraw-1.png';
 import withdraw2 from '../assets/image/deposite/Withdraw-2.png';
 import addIcon from '../assets/image/deposite/add-icon.png';
+import { Link } from "react-router-dom";
 
 const WithdrawCards = () => {
   const [selectedMethod, setSelectedMethod] = useState(null);
@@ -33,10 +34,12 @@ const WithdrawCards = () => {
                 <p>USDT</p>
               </li>
             </ul>
+            <Link to="/addbank">
             <div className="deposite-card-add">
               <img src={addIcon} alt="Add" />
               <p>Add</p>
             </div>
+            </Link>
           </div>
 
           <div className="deposit-amount-input">

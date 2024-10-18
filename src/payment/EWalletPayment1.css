@@ -1,0 +1,81 @@
+
+
+
+
+
+.ewallet-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #000;
+    padding: 10px;
+    background: #fff;
+    width: 100%;
+}
+.ewallet-card-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+.ewallet-card-inner svg path {
+    fill: #f95959;
+}
+.ewallet-card-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.ewallet-card-inner div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.ewallet-card-inner h5 {
+    font-size: 20px;
+}
+.ewallet-card-inner div img {
+    width: 30px;
+    height: 30px;
+}
+.ewallet-card {
+    background: #fff;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+}
+.ewallet-card p {
+    color: #768096;
+    margin-bottom: 10px;
+}
+.ewallet-footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+.ewallet-footer .ewallet-add-btn {
+    background: #f95959;
+    color: #000;
+    font-weight: 700;
+    width: 100%;
+    border: 0;
+    padding: 9px;
+}
+.ewallet-footer .ewallet-save-btn {
+    background: linear-gradient(90deg, #CCCEDC 15.38%, #CDCFDD 98.73%);
+    color: #000;
+    font-weight: 700;
+    width: 100%;
+    border: 0;
+    padding: 9px;
+}
+
+
+
+
+
+
