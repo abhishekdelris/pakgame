@@ -31,6 +31,23 @@ const DepositMain = () => {
   const [profile, setProfile] = useState([]);
   const [paymentStatus, setPaymentStatus] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [error, setError] = useState(''); 
+
+  // Function to handle amount input and validation
+  const handleInputChange = (e) => {
+    const inputValue = parseInt(e.target.value);
+
+    // Set the input value
+    setAmount(inputValue);
+
+    // Check if amount is less than 250
+    if (inputValue < 250) {
+      setError('Minimum deposit amount is Rs 250'); // Set error message
+    } else {
+      setError(''); // Clear error if valid amount
+    }
+  };
+
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => {
@@ -333,17 +350,19 @@ const handlePhoneChange = (e) => {
                 type="number"
                 placeholder="Please enter the amount"
                 value={amount}
-                onChange={(e) => setAmount(e.target.value)} // Allow manual input
+                onChange={handleInputChange}
               />
               <img src={crosIcon} alt="Clear Icon" onClick={clearAmount} style={{ cursor: 'pointer' }} />
             </div>
+            {error && <p style={{ color: 'red', marginTop: '5px' }}>{error}</p>}
             <div className="text-center">
-              <button className={amount === "" ? "deposit-btn " : "open-modal-btn"} onClick={handleOpen}>Deposit</button>
+              <button className={amount === "" || amount < 250 ? "deposit-btn " : "open-modal-btn"} onClick={handleOpen}  disabled={amount < 250}>Deposit</button>
 
             </div>
           </div>
         </div>
       </div>
+     
       {open && (
         <div className="modal-overlay">
           <div className="modal-content">
