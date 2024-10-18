@@ -11,6 +11,9 @@ const DailyTasks = () => {
     const navigate = useNavigate();
     const [Award, setAward] = useState([]);
     const [loading, setLoading] = useState(true);
+    const[isButtonVisible, setIsButtonVisible] = useState(true); // Control button visibility
+    const [responseMessage, setResponseMessage] = useState(''); // Store the API response
+
 
     useEffect(() => {
         const userId = Cookies.get('user_id');
@@ -51,6 +54,41 @@ const DailyTasks = () => {
         return <div>Loading...</div>;
     }
 
+
+    // Function to handle the reward claim action
+    const handleFunction = () => {
+        const formdata = new FormData();
+        formdata.append("reward_id", "18"); // Pass the actual reward ID
+        formdata.append("user_id", "324");  // Pass the actual user ID
+
+        const requestOptions = {
+            method: "POST",
+            body: formdata,
+            redirect: "follow"
+        };
+
+        // API call to reward claim endpoint
+        fetch("https://delristech-projects.in/pak_game/index.php/api/users/reward_claim", requestOptions)
+            .then((response) => response.json()) // Assuming API returns JSON
+            .then((result) => {
+                console.log(result);
+                if (result.isClaimed) {
+                    setIsButtonVisible(false); // Hide the button if already claimed
+                    setResponseMessage("Reward already claimed!"); // Show message
+                } else if (result.success) {
+                    setIsButtonVisible(false); // Hide the button if successfully claimed
+                    setResponseMessage("Reward claimed successfully!"); // Show success message
+                } else {
+                    setResponseMessage("Failed to claim reward. Please try again."); // Show failure message
+                }
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+                setResponseMessage("An error occurred. Please try again."); // Handle any error
+            });
+    };
+
+
     return (
         <>
             <div className="container">
@@ -90,9 +128,35 @@ const DailyTasks = () => {
                                             <span>{data.amount || '0'}</span>
                                         </label>
                                     </div>
+                                    <div>
+                                        {isButtonVisible ? (
+                                            <button onClick={handleFunction}>Claim Reward</button>
+                                        ) : (
+                                            <p>{responseMessage}</p>
+                                        )}
+                                    </div>
                                 </div>
                             )) : (
-                                <div>No data available</div>
+                                <>
+            <div className="row">
+              <div className="col-12">
+                <div className="deposit-history-card">
+                  <h5>
+                    <img src={depositeIcon} alt />
+                    Withdrawal history
+                  </h5>
+                  <div className="text-center">
+                    <img
+                      src={noData}
+                      className="img-fluid"
+                      alt
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+         
+                </>
                             )}
                         </div>
                     </div>

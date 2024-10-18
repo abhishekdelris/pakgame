@@ -6,12 +6,60 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from "../assets/image/pak-logo-white.png";
 
 const ForgotPassword = () => {
+  const baseURLAPI = import.meta.env.VITE_BASE_URL_API;
+  const navigate = useNavigate();
+
+  const [activeTab, setActiveTab] = useState("phone");
+  const [phone, setPhone] = useState('');
+  const [mail, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordNew, setPasswordNew] = useState('');
+  const [passwordEmail, setPasswordEmail] = useState('');
+  const [passwordEmailNew, setPasswordEmailNew] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showPasswordNew, setShowPasswordNew] = useState(false);
+  const [showPasswordEmail, setShowPasswordEmail] = useState(false);
+  const [showPasswordEmailNew, setShowPasswordEmailNew] = useState(false);
+  const [rememberMe, setRememberMe] = useState(false);
+  const [countryCode, setCountryCode] = useState('92');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [otpSent, setOtpSent] = useState(false);
+  const [otp, setOtp] = useState('');
+  const [isOtpVerified, setIsOtpVerified] = useState(false);
+  const [isOtpSent, setIsOtpSent] = useState(false);
+  const [phoneError, setPhoneError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [isSending, setIsSending] = useState(false);
+  const [timer, setTimer] = useState(0);
+  const [inviteCodeError, setInviteCodeError] = useState("");
+  const [inviteCodeValid, setInviteCodeValid] = useState(false);
+
+  const validatePhoneNumber = (number) => {
+    if (number.startsWith("0")) {
+      number = number.slice(1); // Remove the first character
+    }
+    const phonePattern = /^\d{10}$/; // Regex for 10 digits only
+    return phonePattern.test(number);
+  }; 
+
+  const startTimer = (duration) => {
+    setTimer(duration);
+    const countdown = setInterval(() => {
+      setTimer((prevTimer) => {
+        if (prevTimer <= 1) {
+          clearInterval(countdown);
+        }
+        return prevTimer - 1;
+      });
+    }, 1000);
+  };
 
   const handleSendOtp = async () => {
 
-
-    const fullPhoneNumber = `${countryCode}${phoneNum}`;
-    if (!validatePhoneNumber(phoneNum)) {
+    
+    const fullPhoneNumber = `${countryCode}${phone}`;
+    if (!validatePhoneNumber(phone)) {
       return setPhoneError("Phone number must be 10 digits and contain only numbers.");
     } else {
       setPhoneError(""); // Clear the error if valid
@@ -30,7 +78,7 @@ const ForgotPassword = () => {
     // setOtpSent(true);
     setIsSending(true);
     try {
-      const response = await fetch(`${baseURLAPI}users/send_sms`, requestOptions);
+      const response = await fetch(`${baseURLAPI}users/send_forgot_otp`, requestOptions);
       const result = await response.json(); // Parse the response as JSON
       console.log("send otp", result);
       if (result.status === "success") {
@@ -38,6 +86,7 @@ const ForgotPassword = () => {
         console.log("your OTP is : ", result.otp);
         //setOtp(result.otp);
         setOtpSent(true);
+        setIsOtpSent(true);
         startTimer(59);
       } else if (result.status === 'fail') {
         setPhoneError("Your mobile number is already registered. Please log in or use a different number.");
@@ -108,73 +157,79 @@ const ForgotPassword = () => {
     }
   };
 
- const handleForgotPassword =(e) =>{
-  
+  const handleForgotPassword = (e) => {
     e.preventDefault();
-
-    if (!isOtpVerified) {
-      alert("Please verify OTP before registering.");
-      return;
-    }
-
+  
     // Make sure passwords match
-    if (password !== confirmPassword) {
+    if (password !== passwordNew) {
       alert("Passwords do not match!");
       return;
     }
-
-    // Prepare headers
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("Cookie", "ci_session=ibb96pue2kcr781jklu1aj81hjgh1i2f");  // Ensure this session cookie is valid or dynamically fetched.
- // Prepare the registration data
- const registrationData = {
-  phone: `${countryCode}${phoneNum}`,
-  password: password,
-  otp : otp
-};
-
-const requestOptions = {
-  method: "POST",
-  headers: myHeaders,
-  body: JSON.stringify(registrationData),
-  redirect: "follow"
-};
-
-   // Perform the registration request
-   fetch(`${baseURLAPI}users/forgot_password`, requestOptions)
-   .then((response) =>   response.text()) // Handle response as text first
-   .then((result) => {
-     try {
-       const parsedResult = JSON.parse(result); // Parse as JSON
-       console.log("parsedResult",parsedResult);
-       
-
-       if (parsedResult.error === false) { // Assuming error is a boolean
-         alert("Registration successful!");
-         setEmailError("")
-
-         navigate('/login');  // Redirect to login after successful registration
-       } else if (parsedResult.error === true) {
-         setEmailError("Email already registered!");
-         console.log("email error", parsedResult.message);
-
-       } else {
-         setEmailError("");
-         console.error("Unexpected error format:", parsedResult);
-         alert(`${parsedResult.message}`);
-       }
-     } catch (error) {
-       console.error("Response is not in JSON format:", error);
-       alert("An error occurred while processing the registration.");
-     }
-   })
-   .catch((error) => {
-     console.error("Network error or other issue:", error);
-     alert(`An error occurred during registration.${result}`);
-   });
-
-};
+  console.log();
+  const fullPhoneNumber = `${countryCode}${phone}`;
+  console.log("number",fullPhoneNumber);
+  
+    // Create FormData object
+    const formData = new FormData();
+    formData.append("mobile", fullPhoneNumber);
+    formData.append("password", password);
+    formData.append("otp", otp);
+  
+    // Prepare the request options
+    const requestOptions = {
+      method: "POST",
+      body: formData, // Use formData here
+      redirect: "follow"
+    };
+  
+    // Perform the forgot password request
+    fetch(`${baseURLAPI}users/forgot_password`, requestOptions)
+      .then((response) => {
+        console.log("response", response);
+  
+        // Check if the response content type is JSON
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+          return response.json(); // Parse as JSON
+        } else {
+          return response.text(); // Return as plain text if not JSON
+        }
+      })
+      .then((result) => {
+        console.log("result...", result);
+  
+        if (typeof result === "string") {
+          // If the result is plain text, handle it accordingly
+          console.error("Server response is not in JSON format:", result);
+          alert("An error occurred while processing the request.");
+        } else {
+          // Handle the parsed JSON result
+          console.log("parsedResult", result);
+  
+          if (result.error === false) { // Assuming error is a boolean
+            alert("Password reset successful!");
+            setEmailError("");
+  
+            navigate('/login');  // Redirect to login after successful registration
+          } else if (result.error === true) {
+            setEmailError("Number is not Found");
+            alert(`Error : - ${result.message}`);
+            console.log("error", result.message);
+          } else {
+            setEmailError("");
+            console.error("Unexpected error format:", result);
+            alert(`${result.message}`);
+          }
+        }
+      })
+      .catch((error) => {
+        console.error("Network error or other issue:", error);
+        alert(`An error occurred during registration.`);
+      });
+  };
+  
+  
+  
 
 
   const handleBackClick = () => {
@@ -183,19 +238,7 @@ const requestOptions = {
 
 
 
-  const [activeTab, setActiveTab] = useState("phone");
-  const [phone, setPhone] = useState('');
-  const [mail, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [passwordNew, setPasswordNew] = useState('');
-  const [passwordEmail, setPasswordEmail] = useState('');
-  const [passwordEmailNew, setPasswordEmailNew] = useState('');
-  const [showPassword, setShowPassword] = useState(false);
-  const [showPasswordNew, setShowPasswordNew] = useState(false);
-  const [showPasswordEmail, setShowPasswordEmail] = useState(false);
-  const [showPasswordEmailNew, setShowPasswordEmailNew] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
-  const [countryCode, setCountryCode] = useState('+1');
+  
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
@@ -358,7 +401,7 @@ const requestOptions = {
                       }`}
                       id="phone"
                     >
-                      <form onSubmit={handleLogin}>
+                      <form onSubmit={handleForgotPassword}>
                         <div className="mt-4">
                           <label htmlFor="phone" className="form-label">
                             <svg
@@ -480,15 +523,22 @@ const requestOptions = {
                               type="number"
                               className="form-control"
                               placeholder="Please enter the confirmation code"
+                              id="otp"
+                              value={otp}
+                              onChange={(e) => setOtp(e.target.value)}
                               required
                             />
                             <button
                               type="button"
                               className="verification-btn"
+                              onClick={isOtpSent ? handleOtpVerification : handleSendOtp}
                             >
-                              Send
+                             {isOtpSent ? 'Verify' : 'Send'}
                             </button>
+                            
+                    
                           </div>
+                          
                         </div>
                         <div className="form-check mt-4 custom-checkbox">
                           <input
