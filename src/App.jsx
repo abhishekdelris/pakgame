@@ -537,6 +537,16 @@ const App = () => {
             </>
           }
         />
+         <Route
+          path="/withdawsblehistory"
+          element={
+            <>
+              <Header />
+              <WithdrawalHistory />
+              <Footer />
+            </>
+          }
+        />
       </Routes>
     </Router>
   );

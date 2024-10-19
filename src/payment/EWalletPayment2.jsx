@@ -1,6 +1,63 @@
-import React from 'react'
+import React, { useState } from 'react';
+import Cookies from 'js-cookie'; 
+import { Link, useNavigate } from 'react-router-dom';
 
 const EWalletPayment2 = () => {
+  const userId = Cookies.get('user_id');
+  const navigate = useNavigate();
+  const baseURLAPI = import.meta.env.VITE_BASE_URL_API;
+  // State for form inputs
+  const [formData, setFormData] = useState({
+    user_id: '',
+    IBAN: '',
+    bank_name: '',
+    beneficiary_name: ''
+  });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [responseMessage, setResponseMessage] = useState('');
+
+  // Handle input changes
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent the default form submission behavior
+    setIsSubmitting(true);
+    setResponseMessage('');
+
+    const formdata = new FormData();
+    formdata.append("user_id", userId);
+    formdata.append("IBAN", formData.IBAN);
+    formdata.append("bank_name", formData.bank_name);
+    formdata.append("beneficiary_name", formData.beneficiary_name);
+
+    const requestOptions = {
+      method: "POST",
+      body: formdata,
+      redirect: "follow"
+    };
+
+    try {
+      const response = await fetch(`${baseURLAPI}users/add_bank`, requestOptions);
+      const result = await response.text();
+      console.log(result);
+      setResponseMessage('Form submitted successfully!');
+    } catch (error) {
+      console.error(error);
+      setResponseMessage('An error occurred. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleBackClick = () => {
+    navigate(-1);
+  };
+
   return (
     <>
       <div className="container">
@@ -21,53 +78,82 @@ const EWalletPayment2 = () => {
                   style={{ fill: "#000" }}
                 />
               </svg>
-              <h5>E-WalletPayment method</h5>
-              <h5></h5>
+              <h5>E-Wallet Payment Method</h5>
             </div>
           </div>
         </div>
+
         <div className="row">
-          <div className="col-lg-4 col-md-6 col-12 mx-auto agency-bg-color h-100vh ">
+          <div className="col-lg-4 col-md-6 col-12 mx-auto agency-bg-color h-100vh">
             <div className="ewallet-card">
               <div className="ewallet-card-inner">
                 <div>
-                  <img
-                    src="https://pakgames.net/assets/png/4-d37103ef.png"
-                    alt=""
-                  /> 
+                  <img src="https://pakgames.net/assets/png/4-d37103ef.png" alt="" />
                   <h5>E-Wallet</h5>
                 </div>
-               
               </div>
-              <form action="">
+
+              {/* Form for user input */}
+              <form onSubmit={handleSubmit}>
                 <div className="col-12 mb-2">
-                    <label htmlFor="">Choose type</label>
-                    <select name="" id="" className='form-control'>
-                        <option value="">Please choose</option>
-                    </select>
+                  <label htmlFor="bank_name">Choose type</label>
+                  <select
+                    name="bank_name"
+                    id="bank_name"
+                    className="form-control"
+                    value={formData.bank_name}
+                    onChange={handleInputChange}
+                  >
+                    <option value="">Please choose</option>
+                    <option value="Axis">Axis</option>
+                    <option value="HDFC">HDFC</option>
+                    <option value="SBI">SBI</option>
+                    {/* Add more options as needed */}
+                  </select>
                 </div>
+
                 <div className="col-12 mb-2">
-                    <label htmlFor="">Full name</label>
-                    <input type="text" className='form-control' placeholder='Please Enter Name' name="" id="" />
+                  <label htmlFor="beneficiary_name">Full name</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Please Enter Name"
+                    name="beneficiary_name"
+                    value={formData.beneficiary_name}
+                    onChange={handleInputChange}
+                  />
                 </div>
+
                 <div className="col-12 mb-2">
-                    <label htmlFor="">Account</label>
-                    <input type="number" className='form-control' placeholder='Please Enter Account' name="" id="" />
+                  <label htmlFor="IBAN">Account</label>
+                  <input
+                    type="number"
+                    className="form-control"
+                    placeholder="Please Enter Account"
+                    name="IBAN"
+                    value={formData.IBAN}
+                    onChange={handleInputChange}
+                  />
+                </div>
+
+                <div className="col-12 mb-2">
+                  <button
+                    type="submit"
+                    className="ewallet-save-btn"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Submitting...' : 'Save'}
+                  </button>
                 </div>
               </form>
+
+              {responseMessage && <p>{responseMessage}</p>}
             </div>
-          </div>
-        </div>
-      </div>
-      <div className="container ewallet-footer">
-        <div className="row">
-          <div className="col-lg-4 col-md-6 col-12 mx-auto px-0">
-            <button className="ewallet-save-btn">Save</button>
           </div>
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default EWalletPayment2
+export default EWalletPayment2;
