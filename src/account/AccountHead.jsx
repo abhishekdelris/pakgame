@@ -22,6 +22,8 @@ const AccountHead = () => {
                 .then(response => response.json())
                 .then(data => {
                     setProfile(data);
+                    console.log("data...",data);
+                    
                     setLoading(false);
                 })
                 .catch(error => {
@@ -96,7 +98,7 @@ const AccountHead = () => {
                 <div className="account-user-card">
                     <p>Total balance</p>
                     <h5>
-                        Rs {profile.data.total_amount} <img src={rsImg} alt="Reload" onClick={handleReload} />
+                        Rs {profile.data.wallet_balance ? profile.data.wallet_balance : "0" } <img src={rsImg} alt="Reload" onClick={handleReload} />
                     </h5>
                     <div className="account-user-card-icon">
                         <div>

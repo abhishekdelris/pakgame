@@ -7,7 +7,8 @@ const Lottery = () => {
   const baseURLAPI = import.meta.env.VITE_BASE_URL_API;
   const [isOpen, setIsOpen] = useState(false);
   const [selectedGame, setSelectedGame] = useState(null); // Store selected game
-
+  const userId = Cookies.get('user_id');
+  
   const toggleModal = () => {
     setIsOpen(!isOpen);
   };
@@ -27,7 +28,7 @@ const Lottery = () => {
   }, []);
 
   const handleGameClick = (game) => {
-    const userId = Cookies.get('user_id');
+   
 
     if (!userId) {
       console.error('Please Login First.');
@@ -50,6 +51,7 @@ const Lottery = () => {
 
     // Add the data as hidden inputs
     const data = {
+      user_id: userId,
       game_id: selectedGame.id,
       game_title: selectedGame.title,
       MerchantID: selectedGame.MerchantID,

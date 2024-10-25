@@ -45,7 +45,7 @@ const WalletHeading = () => {
         <div className="wallet-heading-inner">
           <h5>WALLET</h5>
           <img src={walletIcon} alt="wallet" onClick={handleReload} />
-          <h6>Rs{profile.data.total_amount}</h6>
+          <h6>Rs{profile.data.wallet_balance ? profile.data.wallet_balance : 0}</h6>
           <p>Total balance</p>
         </div>
       </div>

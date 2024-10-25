@@ -85,7 +85,7 @@ const WithdrawHead = () => {
               <img src={depositIcon} alt /> Balance
             </h5>
             <h3>
-              Rs{profile.data.total_amount}
+              Rs{profile.data.wallet_balance ? profile.data.wallet_balance : 0}
               <svg
                 width={20}
                 height={16}

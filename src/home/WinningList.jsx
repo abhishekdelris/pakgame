@@ -27,7 +27,23 @@ const WinningList = () => {
         }
         const data = await response.json();
         console.log(data);
-        setEarn(data.data || []); // Assuming `data` contains the winners
+
+        // Sort data by amount in descending order
+        const sortedData = (data.data || []).sort((a, b) => b.amount - a.amount);
+
+        // Create a new array with the desired order
+        const rearrangedData = [];
+        if (sortedData.length > 1) {
+          // Add the second largest first, largest second
+          rearrangedData.push(sortedData[1]); // Second largest
+          rearrangedData.push(sortedData[0]); // Largest
+          // Add the rest of the sorted data (excluding the two largest)
+          rearrangedData.push(...sortedData.slice(2));
+        } else if (sortedData.length === 1) {
+          rearrangedData.push(...sortedData); // If there's only one winner
+        }
+
+        setEarn(rearrangedData);
       } catch (error) {
         console.error('Error fetching winners:', error);
       } finally {
@@ -80,7 +96,7 @@ const WinningList = () => {
 
       {/* Display remaining winners */}
       <div className="row">
-        {earn.slice(3, 5).map((winner, index) => (
+        {earn.slice(3).map((winner, index) => (
           <div className="col-12" key={winner.username}>
             <div className="wining-list-top">
               <div>

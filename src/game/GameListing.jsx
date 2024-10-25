@@ -54,6 +54,7 @@ const GameListing = () => {
 
     // Add the data as hidden inputs
     const data = {
+      user_id: userId,
       game_id: game.id,
       game_title: game.title,
       MerchantID: game.MerchantID,

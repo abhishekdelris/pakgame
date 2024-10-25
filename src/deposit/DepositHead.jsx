@@ -78,7 +78,7 @@ const DepositHead = () => {
               <img src={depositIcon} alt="Deposit Icon" /> Balance
             </h5>
             <h3>
-              Rs {profile.length > 0  ? profile.data.total_amount : 0}
+              Rs {profile.data.wallet_balance ? profile.data.wallet_balance : 0}
               <svg
                 width={20}
                 height={16}
